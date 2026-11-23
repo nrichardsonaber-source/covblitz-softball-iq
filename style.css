@@ -55,3 +55,4 @@ table.lb td { padding: 10px 6px; border-top: 1px solid var(--line); }
 table.lb tr.me td { background: #12351f; font-weight: 600; }
 .btn.primary + .btn { margin-left: 0; }
 .row .btn { flex: 1; }
+.sid{margin:14px 0 4px;font-size:12px;opacity:.6;text-align:center;user-select:all;-webkit-user-select:all}

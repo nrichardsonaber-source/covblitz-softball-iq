@@ -253,6 +253,7 @@
     app.appendChild(el(chipsHtml(s.sit)));
     if (state.stage === "play") app.appendChild(el('<p class="ball">' + esc(s.play.ball) + '</p>'));
     app.appendChild(el('<p>' + esc(st.q) + '</p>'));
+    app.appendChild(el('<div class="sid">ID: ' + esc(s.id) + ' · ' + (state.stage === "pre" ? "pre" : "play") + '</div>'));
 
     state.t0 = Date.now();
     var order = shuffle(st.opts.map(function (t, idx) { return { t: t, idx: idx }; }));
@@ -308,7 +309,7 @@
       app.appendChild(el('<details class="card"><summary>' + esc(s.title) + '</summary>' + chipsHtml(s.sit) +
         '<div class="k">Before the pitch</div><p>' + esc(s.pre.q) + '</p><p><strong>' + esc(s.pre.opts[s.pre.a]) + '</strong></p><p class="sub">' + esc(s.pre.why) + '</p>' +
         '<div class="k">Ball in play</div>' + fieldSvg(s.sit, h, state.pos) + '<div class="hitlabel"><b>' + TYPE_LABEL[h.type] + '</b> · ' + esc(h.label) + '</div>' +
-        '<p class="ball">' + esc(s.play.ball) + '</p><p><strong>' + esc(s.play.opts[s.play.a]) + '</strong></p><p class="sub">' + esc(s.play.why) + '</p></details>'));
+        '<p class="ball">' + esc(s.play.ball) + '</p><p><strong>' + esc(s.play.opts[s.play.a]) + '</strong></p><p class="sub">' + esc(s.play.why) + '</p><div class="sid">ID: ' + esc(s.id) + '</div></details>'));
     });
   }
 
