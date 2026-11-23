@@ -245,7 +245,8 @@
     app.appendChild(el('<div class="scorebar"><span>Score <b>' + state.score + '</b></span><span>Streak <b>' + state.streak + '</b></span></div>'));
     if (state.mode === "random") app.appendChild(el('<div class="youare">You are the <b>' + esc(posName(pos)) + '</b> (' + esc(pos) + ')</div>'));
     app.appendChild(el('<div class="stage">' + (state.stage === "pre" ? "Step 1 · Before the pitch" : "Step 2 · Ball in play") + '</div>'));
-    app.appendChild(el('<h2>' + esc(s.title) + '</h2>'));
+    // the title often gives away the play, so it only shows once the ball is hit
+    if (state.stage === "play") app.appendChild(el('<h2>' + esc(s.title) + '</h2>'));
     var hit = state.stage === "play" ? s.play.hit : null;
     app.appendChild(el(fieldSvg(s.sit, hit, pos)));
     if (hit) app.appendChild(el('<div class="hitlabel"><b>' + TYPE_LABEL[hit.type] + '</b> · ' + esc(hit.label) + '</div>'));
