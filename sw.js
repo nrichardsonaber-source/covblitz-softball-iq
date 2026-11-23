@@ -1,0 +1,14 @@
+// Offline cache: network-first so updates show up, falling back to cache in the dugout.
+var CACHE = "softball-iq-v4";
+var FILES = ["./", "index.html", "style.css", "app.js", "scenarios.js", "scenarios-batch2.js", "config.js", "manifest.webmanifest", "icon-192.svg", "icon-512.svg"];
+self.addEventListener("install", function (e) { e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); })); self.skipWaiting(); });
+self.addEventListener("activate", function (e) {
+  e.waitUntil(caches.keys().then(function (ks) { return Promise.all(ks.filter(function (k) { return k !== CACHE; }).map(function (k) { return caches.delete(k); })); }));
+  self.clients.claim();
+});
+self.addEventListener("fetch", function (e) {
+  if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
+  e.respondWith(fetch(e.request).then(function (r) {
+    var copy = r.clone(); caches.open(CACHE).then(function (c) { c.put(e.request, copy); }); return r;
+  }).catch(function () { return caches.match(e.request); }));
+});

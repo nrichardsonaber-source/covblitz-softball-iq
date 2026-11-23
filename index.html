@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14532d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Softball IQ">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.svg">
+  <link rel="stylesheet" href="style.css">
+  <title>Softball IQ</title>
+</head>
+<body>
+  <header>
+    <button id="back" aria-label="Back" hidden>&larr;</button>
+    <h1 id="title">Softball IQ</h1>
+    <button id="trophy" aria-label="Leaderboard">&#127942;</button>
+  </header>
+  <nav id="tabs">
+    <button class="tab active" data-tab="fielding">Fielding</button>
+    <button class="tab" data-tab="batting">Batting</button>
+    <button class="tab" data-tab="running">Base running</button>
+  </nav>
+  <main id="app"></main>
+  <script src="config.js"></script>
+  <script src="scenarios.js"></script>
+  <script src="scenarios-batch2.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
